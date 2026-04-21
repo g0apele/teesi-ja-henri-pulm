@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teesi & Henri</title>
+  <meta name="description" content="Teesi ja Henri pulmaleht" />
+  <style>
+    :root {
+      --bg: #f8f5f1;
+      --paper: rgba(255,255,255,0.82);
+      --text: #2f2a26;
+      --muted: #746b63;
+      --accent: #8f6f5a;
+      --accent-dark: #705645;
+      --line: rgba(47, 42, 38, 0.12);
+      --shadow: 0 18px 40px rgba(53, 43, 36, 0.08);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.75), transparent 30%),
+        linear-gradient(180deg, #f6f1eb 0%, #f4efe9 100%);
+      line-height: 1.65;
+    }
+
+    a { color: inherit; }
+
+    .container {
+      width: min(1100px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(248, 245, 241, 0.78);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      font-size: 1.15rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-size: 0.96rem;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: var(--muted);
+    }
+
+    .nav a:hover { color: var(--accent-dark); }
+
+    .hero {
+      padding: 88px 0 48px;
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.86), rgba(255,255,255,0.72));
+      border: 1px solid rgba(255,255,255,0.6);
+      border-radius: 32px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 30px;
+      padding: 54px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent);
+      font-size: 0.82rem;
+      margin-bottom: 14px;
+    }
+
+    h1, h2, h3 {
+      line-height: 1.15;
+      margin: 0 0 14px;
+      font-weight: 500;
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 5vw, 5rem);
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      max-width: 640px;
+      color: var(--muted);
+      font-size: 1.06rem;
+      margin: 0 0 24px;
+    }
+
+    .hero-details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .pill {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(143, 111, 90, 0.1);
+      border: 1px solid rgba(143, 111, 90, 0.14);
+      font-size: 0.95rem;
+    }
+
+    .hero-side {
+      background: linear-gradient(180deg, rgba(143, 111, 90, 0.08), rgba(143, 111, 90, 0.02));
+      border: 1px solid rgba(143, 111, 90, 0.12);
+      border-radius: 26px;
+      padding: 28px;
+    }
+
+    .hero-side h3 {
+      font-size: 1.4rem;
+      margin-bottom: 14px;
+    }
+
+    .countdown-note {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    main section {
+      padding: 22px 0;
+    }
+
+    .section-card {
+      background: var(--paper);
+      border-radius: var(--radius);
+      padding: 34px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,0.65);
+    }
+
+    .section-head {
+      margin-bottom: 24px;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .info-box, .timeline-item, .stay-card, .faq-item {
+      background: rgba(255,255,255,0.74);
+      border: 1px solid rgba(47, 42, 38, 0.08);
+      border-radius: 20px;
+      padding: 22px;
+    }
+
+    .info-box p:last-child,
+    .timeline-item p:last-child,
+    .stay-card p:last-child,
+    .faq-item p:last-child {
+      margin-bottom: 0;
+    }
+
+    .label {
+      display: inline-block;
+      margin-bottom: 10px;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 14px;
+    }
+
+    .timeline-item strong {
+      font-size: 1.05rem;
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-size: 0.98rem;
+      transition: 0.2s ease;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-dark);
+    }
+
+    .btn-secondary {
+      border-color: rgba(47, 42, 38, 0.12);
+      background: rgba(255,255,255,0.82);
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(47, 42, 38, 0.2);
+      background: white;
+    }
+
+    .rsvp-embed {
+      width: 100%;
+      min-height: 900px;
+      border: 0;
+      border-radius: 18px;
+      background: white;
+    }
+
+    .photo-upload {
+      text-align: center;
+      padding: 28px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(143,111,90,0.09), rgba(255,255,255,0.6));
+      border: 1px solid rgba(143,111,90,0.12);
+    }
+
+    .footer {
+      padding: 34px 0 50px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    .small-note {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    ul.clean {
+      padding-left: 18px;
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 860px) {
+      .hero-inner,
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-inner {
+        padding: 28px;
+      }
+
+      .section-card {
+        padding: 24px;
+      }
+
+      .topbar-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">Teesi & Henri</div>
+      <nav class="nav">
+        <a href="#meiepaev">Pulmapäev</a>
+        <a href="#ajakava">Ajakava</a>
+        <a href="#majutus">Majutus</a>
+        <a href="#lisainfo">Lisainfo</a>
+        <a href="#rsvp">RSVP</a>
+        <a href="#pildid">Pildid</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-card">
+        <div class="hero-inner">
+          <div>
+            <div class="eyebrow">Me abiellume</div>
+            <h1>Teesi & Henri</h1>
+            <p>
+              Tere tulemast meie pulmalehele. Siit leiad kogu vajaliku info meie suure päeva kohta:
+              millal ja kus kohtume, kuidas RSVP teha, kus ööbida ning kuhu üles laadida peol tehtud pildid.
+            </p>
+            <div class="hero-details">
+              <div class="pill">Lisa siia kuupäev</div>
+              <div class="pill">Lisa siia kellaaeg</div>
+              <div class="pill">Lisa siia asukoht</div>
+            </div>
+            <div class="btn-row">
+              <a class="btn btn-primary" href="#rsvp">Vasta kutsele</a>
+              <a class="btn btn-secondary" href="#pildid">Lae pildid üles</a>
+            </div>
+          </div>
+
+          <aside class="hero-side">
+            <h3>Armsad külalised</h3>
+            <p>
+              Meil on väga hea meel, et saad meiega seda päeva jagada. Palun anna oma tulekust teada,
+              vaata üle majutuse info ja hoia see leht endale alles, et kõik oluline oleks mugavalt ühes kohas.
+            </p>
+            <p class="countdown-note">
+              Soovi korral saad siia lisada ka lühikese personaalse tervituse või teie ühise tsitaadi.
+            </p>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <section id="meiepaev">
+      <div class="container section-card">
+        <div class="section-head">
+          <h2>Pulmapäev</h2>
+          <p>Siia pane kõige olulisem info kiiresti leitaval kujul.</p>
+        </div>
+
+        <div class="grid grid-3">
+          <div class="info-box">
+            <div class="label">Millal</div>
+            <h3>Lisa kuupäev</h3>
+            <p>Nt laupäev, 18. juuli 2026</p>
+          </div>
+          <div class="info-box">
+            <div class="label">Mis kell</div>
+            <h3>Lisa kellaaeg</h3>
+            <p>Nt külaliste kogunemine kell 15.00</p>
+          </div>
+          <div class="info-box">
+            <div class="label">Kus</div>
+            <h3>Lisa peokoha nimi</h3>
+            <p>Lisa aadress ja vajadusel lühike juhis kohalejõudmiseks.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ajakava">
+      <div class="container section-card">
+        <div class="section-head">
+          <h2>Ajakava</h2>
+          <p>Hoia see lihtne, et külalistel oleks kerge päeva kulgu jälgida.</p>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="label">15.00</div>
+            <strong>Külaliste saabumine</strong>
+            <p>Lisa siia, kus külalisi oodatakse ja kas toimub tervitusjook või kogunemine.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="label">16.00</div>
+            <strong>Tseremoonia</strong>
+            <p>Lisa siia tseremoonia asukoht ja vajadusel lühike märkus.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="label">17.30</div>
+            <strong>Õnnitlused ja pildistamine</strong>
+            <p>Lisa siia info, kui soovid külalistele vahepeal suuniseid anda.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="label">19.00</div>
+            <strong>Õhtusöök ja pidu</strong>
+            <p>Lisa siia peo osa algus, esimene tants või muu oluline hetk.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="majutus">
+      <div class="container section-card">
+        <div class="section-head">
+          <h2>Majutus</h2>
+          <p>Lisa siia variandid, mida soovitad oma külalistele.</p>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="stay-card">
+            <div class="label">Soovitus 1</div>
+            <h3>Hotelli või majutuskoha nimi</h3>
+            <p>Lisa aadress, kaugus peopaigast ja vajadusel hinnavahemik.</p>
+            <p><a href="#">Lisa broneerimislink</a></p>
+          </div>
+          <div class="stay-card">
+            <div class="label">Soovitus 2</div>
+            <h3>Teine majutuskoht</h3>
+            <p>Lisa siia alternatiiv neile, kes soovivad ööbida lähedal või soodsama hinnaga.</p>
+            <p><a href="#">Lisa broneerimislink</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="lisainfo">
+      <div class="container section-card">
+        <div class="section-head">
+          <h2>Lisainfo</h2>
+          <p>Siia saad panna kõik selle, mida külalised tavaliselt enne pulma küsivad.</p>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="faq-item">
+            <h3>Parkimine ja transport</h3>
+            <ul class="clean">
+              <li>Lisa parkimise info</li>
+              <li>Lisa, kas parkimine on tasuta või piiratud</li>
+              <li>Lisa, kas on ühine transport või shuttle</li>
+            </ul>
+          </div>
+          <div class="faq-item">
+            <h3>Dress code</h3>
+            <ul class="clean">
+              <li>Nt pidulik, suvine, boho või black tie</li>
+              <li>Soovi korral lisa värvisoov</li>
+              <li>Vajadusel lisa praktiline märkus jalatsite kohta</li>
+            </ul>
+          </div>
+          <div class="faq-item">
+            <h3>Kingitused</h3>
+            <p>
+              Siia saad lisada viisaka sõnastuse kingituste kohta. Näiteks, et kõige suurem kingitus on teie kohalolek,
+              kuid soovi korral võib toetada mesinädalaid või tuua midagi väikest ja südamlikku.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h3>Kontakt</h3>
+            <p>
+              Lisa siia kontaktisik, kelle poole saab küsimuste korral pöörduda.
+              Näiteks pruutneitsi, isamees või korraldaja.
+            </p>
+            <p class="small-note">Näide: Mari +372 5xxx xxxx</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="rsvp">
+      <div class="container section-card">
+        <div class="section-head">
+          <h2>RSVP</h2>
+          <p>
+            GitHub Pages ise vastuseid ei salvesta, seega kõige lihtsam tasuta lahendus on Google Forms,
+            mille saad siia otse sisse panna.
+          </p>
+        </div>
+
+        <div class="info-box" style="margin-bottom: 20px;">
+          <h3>Mida teha</h3>
+          <p>
+            Loo Google Formsis RSVP vorm küsimustega nagu nimi, kas tuled, mitu inimest tuleb,
+            toidueelistused ja erisoovid. Seejärel vali vormi menüüst <strong>Embed HTML</strong> ja asenda allolev iframe enda vormi lingiga.
+          </p>
+        </div>
+
+        <iframe
+          class="rsvp-embed"
+          src="https://docs.google.com/forms/d/e/1FAIpQLSfDUMMY_FORM_ID/viewform?embedded=true"
+          loading="lazy"
+        >Laadimine…</iframe>
+      </div>
+    </section>
+
+    <section id="pildid">
+      <div class="container section-card">
+        <div class="section-head">
+          <h2>Jaga meiega pulmapilte</h2>
+          <p>
+            Kõige mugavam on lisada siia üks eraldi üleslaadimise link, mille saad teha näiteks Google Drive’i,
+            Google Photosi või mõne spetsiaalse wedding upload teenusega.
+          </p>
+        </div>
+
+        <div class="photo-upload">
+          <h3>Lae pildid üles</h3>
+          <p>
+            Vajuta nupule allpool ja lae oma peol tehtud pildid meiega jagamiseks üles.
+          </p>
+          <p>
+            <a class="btn btn-primary" href="https://example.com" target="_blank" rel="noopener noreferrer">Ava piltide üleslaadimine</a>
+          </p>
+          <p class="small-note">
+            Asenda see link enda päris lingiga. Samast lingist saad teha ka QR-koodi, mille võid panna laudadesse või peokohta välja.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      Armastusega loodud • Teesi & Henri
+    </div>
+  </footer>
+</body>
+</html>
