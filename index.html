@@ -94,6 +94,16 @@
       position: relative;
     }
 
+    .hero-card::before {
+      content: '✦';
+      position: absolute;
+      top: 22px;
+      right: 26px;
+      color: rgba(146, 164, 178, 0.45);
+      font-size: 1rem;
+      letter-spacing: 0.3em;
+    }
+
     .hero-card::after {
       content: '';
       position: absolute;
@@ -172,6 +182,16 @@
       border: 1px solid rgba(174, 187, 198, 0.2);
       border-radius: 28px;
       padding: 28px;
+      position: relative;
+    }
+
+    .hero-side::before {
+      content: '❦';
+      position: absolute;
+      top: 14px;
+      right: 18px;
+      color: rgba(146, 164, 178, 0.38);
+      font-size: 1.1rem;
     }
 
     .hero-side p {
@@ -223,15 +243,40 @@
       padding: 36px;
       box-shadow: var(--shadow);
       border: 1px solid rgba(174, 187, 198, 0.18);
+      position: relative;
+    }
+
+    .section-card::before {
+      content: '';
+      display: block;
+      width: 140px;
+      height: 1px;
+      margin: 0 auto 24px;
+      background: linear-gradient(90deg, transparent, rgba(146, 164, 178, 0.75), transparent);
     }
 
     .section-head {
       margin-bottom: 24px;
+      text-align: center;
     }
 
     .section-head p {
       margin: 0;
       color: var(--muted);
+    }
+
+    .section-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      margin: 0 auto 12px;
+      border-radius: 999px;
+      background: rgba(174, 187, 198, 0.12);
+      border: 1px solid rgba(174, 187, 198, 0.22);
+      color: var(--accent-deep);
+      font-size: 1rem;
     }
 
     .grid {
@@ -247,6 +292,16 @@
       border: 1px solid rgba(174, 187, 198, 0.2);
       border-radius: 22px;
       padding: 24px;
+      position: relative;
+    }
+
+    .info-box::after, .timeline-item::after, .stay-card::after, .faq-item::after {
+      content: '✦';
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      color: rgba(146, 164, 178, 0.22);
+      font-size: 0.8rem;
     }
 
     .label {
@@ -289,6 +344,15 @@
       border-radius: 24px;
       background: linear-gradient(180deg, rgba(174,187,198,0.12), rgba(255,255,255,0.7));
       border: 1px solid rgba(174, 187, 198, 0.2);
+      position: relative;
+    }
+
+    .photo-upload::before {
+      content: '❦';
+      display: block;
+      margin-bottom: 10px;
+      color: rgba(146, 164, 178, 0.55);
+      font-size: 1.1rem;
     }
 
     .small-note {
@@ -387,6 +451,7 @@
     <section id="meiepaev">
       <div class="container section-card">
         <div class="section-head">
+          <div class="section-icon">✦</div>
           <h2>Pulmapäev</h2>
           <p>Kõige olulisem info lühidalt ja selgelt.</p>
         </div>
@@ -405,7 +470,7 @@
           <div class="info-box">
             <div class="label">Kus</div>
             <h3>Lisa peokoha nimi</h3>
-            <p>Lisa siia aadress ja vajadusel lühike juhis kohalejõudmiseks.</p>
+            <p>Peokoha kaart ja sõidujuhised leiad allpool asukoha sektsioonist.</p>
           </div>
         </div>
       </div>
@@ -414,6 +479,7 @@
     <section id="ajakava">
       <div class="container section-card">
         <div class="section-head">
+          <div class="section-icon">❦</div>
           <h2>Ajakava</h2>
           <p>Päeva olulisemad hetked ühes vaates.</p>
         </div>
@@ -446,6 +512,7 @@
     <section id="majutus">
       <div class="container section-card">
         <div class="section-head">
+          <div class="section-icon">⌂</div>
           <h2>Majutus</h2>
           <p>Siia saad lisada majutussoovitused külalistele.</p>
         </div>
@@ -470,6 +537,7 @@
     <section id="lisainfo">
       <div class="container section-card">
         <div class="section-head">
+          <div class="section-icon">✿</div>
           <h2>Lisainfo</h2>
           <p>Kõik praktiline info enne suurt päeva.</p>
         </div>
@@ -510,9 +578,52 @@
       </div>
     </section>
 
+    <section id="asukoht">
+      <div class="container section-card">
+        <div class="section-head">
+          <div class="section-icon">⌘</div>
+          <h2>Asukoht</h2>
+          <p>Vaata peokohta ja ava sõidujuhised otse Google Mapsis.</p>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="map-box">
+            <div class="label">Peokoht</div>
+            <h3>Lisa siia peokoha nimi</h3>
+            <p>
+              Soovi korral lisa siia ka täpne aadress ja mõni lühike märkus, näiteks kuhu keerata või kus parkida.
+            </p>
+            <div class="btn-row">
+              <a class="btn btn-primary" href="https://maps.app.goo.gl/MQCe5s4QJWY2A8Qf6" target="_blank" rel="noopener noreferrer">Ava Google Mapsis</a>
+            </div>
+            <p class="small-note" style="margin-top: 14px;">
+              See nupp avab peokoha otse Google Mapsis ja näitab külalistele sõiduteed.
+            </p>
+          </div>
+
+          <div class="map-box">
+            <div class="label">Kaart</div>
+            <h3>Sõidujuhised</h3>
+            <p>
+              Kui soovid, võin järgmises versioonis panna siia ka päris kaardi sisse. Selleks saada mulle peokoha täpne aadress või Google Mapsi täispikk place-link.
+            </p>
+            <div class="photo-upload" style="text-align:left; padding:24px;">
+              <p style="margin-top:0;">
+                Praegu on kõige kindlam lahendus see, et külaline vajutab nupule ja avab navigeerimise kohe oma telefonis.
+              </p>
+              <p class="small-note" style="margin-bottom:0;">
+                Nii töötab see hästi nii iPhone'is kui Androidis.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="rsvp">
       <div class="container section-card">
         <div class="section-head">
+          <div class="section-icon">✉</div>
           <h2>RSVP</h2>
           <p>Palun anna oma tulekust teada alloleva vormi kaudu.</p>
         </div>
@@ -528,6 +639,7 @@
     <section id="pildid">
       <div class="container section-card">
         <div class="section-head">
+          <div class="section-icon">◈</div>
           <h2>Jaga meiega pulmapilte</h2>
           <p>Lisa siia link, kuhu külalised saavad peol tehtud pildid üles laadida.</p>
         </div>
