@@ -255,4 +255,303 @@
       font-size: 0.78rem;
       text-transform: uppercase;
       letter-spacing: 0.18em;
-      color: var(
+      color: var(--accent-deep);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 14px;
+    }
+
+    .timeline-item strong {
+      display: block;
+      color: #5d7180;
+      margin-bottom: 8px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+
+    .stay-card a {
+      color: #6c8090;
+    }
+
+    .rsvp-embed {
+      width: 100%;
+      min-height: 940px;
+      border: 0;
+      border-radius: 20px;
+      background: white;
+    }
+
+    .photo-upload {
+      text-align: center;
+      padding: 30px;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(174,187,198,0.12), rgba(255,255,255,0.7));
+      border: 1px solid rgba(174, 187, 198, 0.2);
+    }
+
+    .small-note {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    ul.clean {
+      padding-left: 18px;
+      margin-bottom: 0;
+    }
+
+    .footer {
+      padding: 34px 0 52px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero-inner,
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-inner {
+        padding: 34px 26px;
+      }
+
+      .section-card {
+        padding: 24px;
+      }
+
+      .topbar-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      h1 {
+        font-size: 3.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">Teesi & Henri</div>
+      <nav class="nav">
+        <a href="#meiepaev">Pulmapäev</a>
+        <a href="#ajakava">Ajakava</a>
+        <a href="#majutus">Majutus</a>
+        <a href="#lisainfo">Lisainfo</a>
+        <a href="#rsvp">RSVP</a>
+        <a href="#pildid">Pildid</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-card">
+        <div class="hero-inner">
+          <div>
+            <div class="eyebrow">Save the Date</div>
+            <h1>Teesi & Henri</h1>
+            <p>
+              Tere tulemast meie pulmalehele. Siit leiad kogu vajaliku info meie suure päeva kohta,
+              alates ajakavast ja majutusest kuni RSVP ja piltide jagamiseni.
+            </p>
+            <div class="hero-details">
+              <div class="pill">Lisa siia kuupäev</div>
+              <div class="pill">Lisa siia kellaaeg</div>
+              <div class="pill">Lisa siia asukoht</div>
+            </div>
+            <div class="btn-row">
+              <a class="btn btn-primary" href="#rsvp">Vasta kutsele</a>
+              <a class="btn btn-secondary" href="#pildid">Jaga pilte</a>
+            </div>
+          </div>
+
+          <aside class="hero-side">
+            <h3>Armsad külalised</h3>
+            <p>
+              Meil on suur rõõm jagada seda päeva just teiega. Palun andke oma tulekust teada ning hoidke see leht alles,
+              et kogu oluline info oleks mugavalt ühes kohas olemas.
+            </p>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <section id="meiepaev">
+      <div class="container section-card">
+        <div class="section-head">
+          <h2>Pulmapäev</h2>
+          <p>Kõige olulisem info lühidalt ja selgelt.</p>
+        </div>
+
+        <div class="grid grid-3">
+          <div class="info-box">
+            <div class="label">Millal</div>
+            <h3>Lisa kuupäev</h3>
+            <p>Nt laupäev, 18. juuli 2026</p>
+          </div>
+          <div class="info-box">
+            <div class="label">Mis kell</div>
+            <h3>Lisa kellaaeg</h3>
+            <p>Nt külaliste kogunemine kell 15.00</p>
+          </div>
+          <div class="info-box">
+            <div class="label">Kus</div>
+            <h3>Lisa peokoha nimi</h3>
+            <p>Lisa siia aadress ja vajadusel lühike juhis kohalejõudmiseks.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ajakava">
+      <div class="container section-card">
+        <div class="section-head">
+          <h2>Ajakava</h2>
+          <p>Päeva olulisemad hetked ühes vaates.</p>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="label">15.00</div>
+            <strong>Külaliste saabumine</strong>
+            <p>Lisa siia, kus külalisi oodatakse ja kas toimub tervitusjook või kogunemine.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="label">16.00</div>
+            <strong>Tseremoonia</strong>
+            <p>Lisa siia tseremoonia asukoht ja vajadusel lühike märkus.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="label">17.30</div>
+            <strong>Õnnitlused ja pildistamine</strong>
+            <p>Lisa siia info, kui soovid külalistele vahepeal suuniseid anda.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="label">19.00</div>
+            <strong>Õhtusöök ja pidu</strong>
+            <p>Lisa siia peo osa algus, esimene tants või muu oluline hetk.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="majutus">
+      <div class="container section-card">
+        <div class="section-head">
+          <h2>Majutus</h2>
+          <p>Siia saad lisada majutussoovitused külalistele.</p>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="stay-card">
+            <div class="label">Soovitus 1</div>
+            <h3>Hotelli või majutuskoha nimi</h3>
+            <p>Lisa aadress, kaugus peopaigast ja vajadusel hinnavahemik.</p>
+            <p><a href="#">Lisa broneerimislink</a></p>
+          </div>
+          <div class="stay-card">
+            <div class="label">Soovitus 2</div>
+            <h3>Teine majutuskoht</h3>
+            <p>Lisa siia alternatiiv neile, kes soovivad ööbida lähedal või soodsama hinnaga.</p>
+            <p><a href="#">Lisa broneerimislink</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="lisainfo">
+      <div class="container section-card">
+        <div class="section-head">
+          <h2>Lisainfo</h2>
+          <p>Kõik praktiline info enne suurt päeva.</p>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="faq-item">
+            <h3>Parkimine ja transport</h3>
+            <ul class="clean">
+              <li>Lisa parkimise info</li>
+              <li>Lisa, kas parkimine on tasuta või piiratud</li>
+              <li>Lisa, kas on ühine transport või shuttle</li>
+            </ul>
+          </div>
+          <div class="faq-item">
+            <h3>Dress code</h3>
+            <ul class="clean">
+              <li>Nt pidulik, suvine, elegantne või black tie</li>
+              <li>Soovi korral lisa värvisoov</li>
+              <li>Vajadusel lisa praktiline märkus jalatsite kohta</li>
+            </ul>
+          </div>
+          <div class="faq-item">
+            <h3>Kingitused</h3>
+            <p>
+              Siia saad lisada viisaka sõnastuse kingituste kohta. Näiteks, et kõige suurem kingitus on teie kohalolek,
+              kuid soovi korral võib toetada mesinädalaid või tuua midagi väikest ja südamlikku.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h3>Kontakt</h3>
+            <p>
+              Lisa siia kontaktisik, kelle poole saab küsimuste korral pöörduda.
+              Näiteks pruutneitsi, isamees või korraldaja.
+            </p>
+            <p class="small-note">Näide: Mari +372 5xxx xxxx</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="rsvp">
+      <div class="container section-card">
+        <div class="section-head">
+          <h2>RSVP</h2>
+          <p>Palun anna oma tulekust teada alloleva vormi kaudu.</p>
+        </div>
+
+        <iframe
+          class="rsvp-embed"
+          src="https://docs.google.com/forms/d/e/1FAIpQLSdm61AmtPlRgWCWpO__e0T9w12NrjhGs9U0YNPPgOObHH1zQg/viewform?embedded=true"
+          loading="lazy"
+        >Laadimine…</iframe>
+      </div>
+    </section>
+
+    <section id="pildid">
+      <div class="container section-card">
+        <div class="section-head">
+          <h2>Jaga meiega pulmapilte</h2>
+          <p>Lisa siia link, kuhu külalised saavad peol tehtud pildid üles laadida.</p>
+        </div>
+
+        <div class="photo-upload">
+          <h3>Lae pildid üles</h3>
+          <p>
+            Vajuta nupule allpool ja jaga meiega oma ilusaid hetki sellest päevast.
+          </p>
+          <p>
+            <a class="btn btn-primary" href="https://example.com" target="_blank" rel="noopener noreferrer">Ava piltide üleslaadimine</a>
+          </p>
+          <p class="small-note">
+            Asenda see link enda päris upload lingiga. Samast lingist saad teha ka QR-koodi.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      Armastusega loodud • Teesi & Henri
+    </div>
+  </footer>
+</body>
+</html>
